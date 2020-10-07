@@ -19,6 +19,6 @@ export const PracticeScreen = ({navigation}) => {
 const styles = StyleSheet.create({
   main: {
     flex: 1,
-    backgroundColor: theme.PRIMARY_COLOR,
+    backgroundColor: '#fff',
   },
 });

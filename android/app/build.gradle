@@ -121,7 +121,7 @@ def jscFlavor = 'org.webkit:android-jsc:+'
 def enableHermes = project.ext.react.get("enableHermes", false);
 
 android {
-    compileSdkVersion rootProject.ext.compileSdkVersion
+    compileSdkVersion 30
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -131,7 +131,7 @@ android {
     defaultConfig {
         applicationId "com.englishcolorverbs"
         minSdkVersion rootProject.ext.minSdkVersion
-        targetSdkVersion rootProject.ext.targetSdkVersion
+        targetSdkVersion 30
         versionCode 1
         versionName "1.0"
     }
@@ -151,6 +151,7 @@ android {
             keyPassword 'android'
         }
     }
+    buildToolsVersion '30.0.2'
     buildTypes {
         debug {
             signingConfig signingConfigs.debug
@@ -217,3 +218,4 @@ task copyDownloadableDepsToLibs(type: Copy) {
 }
 
 apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)
+apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"

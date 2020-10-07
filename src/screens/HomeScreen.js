@@ -8,14 +8,15 @@ import theme from '../theme';
 export const HomeScreen = ({navigation}) => {
   useLayoutEffect(() => {
     navigation.setOptions({
+      headerShown: true,
       title: 'Color Verbs',
       headerLeft: () => (
         <HeaderButtons HeaderButtonComponent={AppHeaderIcon}>
           <Item
-            title="Breath Info"
+            // title="Breath Info"
             iconName="ios-menu"
             onPress={() => {
-              // navigation.push('');
+              navigation.toggleDrawer();
             }}
           />
         </HeaderButtons>
@@ -23,16 +24,16 @@ export const HomeScreen = ({navigation}) => {
       headerRight: () => (
         <HeaderButtons HeaderButtonComponent={AppHeaderIcon}>
           <Item
-            title="Breath Info"
+            // title="Breath Info"
             iconName="ios-search"
             onPress={() => {
               // navigation.push('');
             }}
           />
           <Item
-            title="Breath Info"
-            // iconName="ios-heart"
-            iconName="ios-heart-outline"
+            // title="Breath Info"
+            iconName="ios-heart"
+            // iconName="ios-heart-outline"
             onPress={() => {
               // navigation.push('');
             }}
@@ -52,6 +53,6 @@ export const HomeScreen = ({navigation}) => {
 const styles = StyleSheet.create({
   main: {
     flex: 1,
-    backgroundColor: theme.PRIMARY_COLOR,
+    backgroundColor: '#fff',
   },
 });

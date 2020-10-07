@@ -19,6 +19,6 @@ export const ExamScreen = ({navigation}) => {
 const styles = StyleSheet.create({
   main: {
     flex: 1,
-    backgroundColor: theme.PRIMARY_COLOR,
+    backgroundColor: '#fff',
   },
 });
