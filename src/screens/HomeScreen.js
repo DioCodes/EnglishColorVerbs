@@ -3,6 +3,7 @@ import {StyleSheet, View} from 'react-native';
 
 import {HeaderButtons, Item} from 'react-navigation-header-buttons';
 import {AppHeaderIcon} from '../components/AppHeaderIcon';
+import {WordsList} from '../components/WordsList/WordsList';
 import theme from '../theme';
 
 export const HomeScreen = ({navigation}) => {
@@ -24,16 +25,13 @@ export const HomeScreen = ({navigation}) => {
       headerRight: () => (
         <HeaderButtons HeaderButtonComponent={AppHeaderIcon}>
           <Item
-            // title="Breath Info"
             iconName="ios-search"
             onPress={() => {
               // navigation.push('');
             }}
           />
           <Item
-            // title="Breath Info"
             iconName="ios-heart"
-            // iconName="ios-heart-outline"
             onPress={() => {
               // navigation.push('');
             }}
@@ -45,7 +43,7 @@ export const HomeScreen = ({navigation}) => {
 
   return (
     <View style={styles.main}>
-      <View />
+      <WordsList />
     </View>
   );
 };

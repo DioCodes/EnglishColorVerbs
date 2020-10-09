@@ -1,14 +1,9 @@
 import React from 'react';
-import {
-  DrawerActions,
-  NavigationContainer,
-  useNavigation,
-} from '@react-navigation/native';
+import {DrawerActions, NavigationContainer} from '@react-navigation/native';
 import {
   createDrawerNavigator,
   DrawerContentScrollView,
   DrawerItem,
-  DrawerItemList,
 } from '@react-navigation/drawer';
 import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
@@ -36,10 +31,12 @@ export const AppNavigation = () => {
     headerStyle: {
       backgroundColor:
         Platform.OS === 'android' ? theme.PRIMARY_COLOR : theme.SECONDARY_COLOR,
+      elevation: 0,
+      shadowOpacity: 0,
     },
     headerBackTitleVisible: false,
     headerTintColor:
-      Platform.OS === 'android' ? theme.SECONDARY_COLOR : theme.PRIMARY_COLOR,
+      Platform.OS === 'android' ? theme.SECONDARY_COLOR : theme.TERTIARY_COLOR,
   };
 
   const HomeStackScreen = () => (
