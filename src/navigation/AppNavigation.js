@@ -5,7 +5,11 @@ import {
   DrawerContentScrollView,
   DrawerItem,
 } from '@react-navigation/drawer';
-import {createStackNavigator} from '@react-navigation/stack';
+import {
+  CardStyleInterpolators,
+  createStackNavigator,
+  TransitionPresets,
+} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {StackActions} from '@react-navigation/native';
 
@@ -16,8 +20,8 @@ import {PracticeScreen} from '../screens/PracticeScreen';
 import {ExamScreen} from '../screens/ExamScreen';
 import theme from '../theme';
 import {Platform, StatusBar} from 'react-native';
-import CardsScreen from '../screens/CardsScreen';
 import SettingsScreen from '../screens/SettingsScreen';
+import {VerbScreen} from '../screens/VerbScreen';
 
 export const AppNavigation = () => {
   const Drawer = createDrawerNavigator();
@@ -71,6 +75,12 @@ export const AppNavigation = () => {
               ? theme.PRIMARY_COLOR
               : theme.SECONDARY_COLOR,
         },
+        labelStyle: {
+          // fontSize: 10 ,
+          fontWeight: '500',
+          fontFamily: 'Helvetica',
+          marginBottom: 2.5,
+        },
       }}>
       <Tab.Screen
         name="TabHome"
@@ -101,7 +111,7 @@ export const AppNavigation = () => {
           title: 'Экзамен',
           tabBarLabel: 'Экзамен',
           tabBarIcon: ({color}) => (
-            <Icon name="ios-list" size={28} color={color} />
+            <Icon name="ios-rocket" size={28} color={color} />
           ),
         }}
       />
@@ -112,13 +122,13 @@ export const AppNavigation = () => {
     <Drawer.Navigator
       initialRouteName="Main"
       drawerContent={(props) => {
-        const pushToCards = StackActions.push('Cards');
+        const pushToCards = StackActions.push('Verbs');
         const pushToSettings = StackActions.push('Settings');
         return (
           <DrawerContentScrollView {...props}>
             {/* <DrawerItemList {...props} /> */}
             <DrawerItem
-              label="Cards"
+              label="Verbs"
               onPress={() => {
                 props.navigation.dispatch(DrawerActions.closeDrawer());
                 props.navigation.dispatch(pushToCards);
@@ -143,7 +153,10 @@ export const AppNavigation = () => {
       initialRouteName="Home"
       screenOptions={{
         ...screenSettings,
-      }}>
+        // cardOverlayEnabled: true,
+      }}
+      mode="modal"
+      headerMode="screen">
       <Stack.Screen
         name="Home"
         component={HomeTabNavigator}
@@ -151,7 +164,16 @@ export const AppNavigation = () => {
           headerShown: false,
         }}
       />
-      <Stack.Screen name="Cards" component={CardsScreen} />
+      <Stack.Screen
+        name="Verb"
+        component={VerbScreen}
+        options={{
+          gestureEnabled: true,
+          cardOverlayEnabled: true,
+          // cardStyleInterpolator: CardStyleInterpolators.forModalPresentationIOS,
+          ...TransitionPresets.ModalPresentationIOS,
+        }}
+      />
       <Stack.Screen name="Settings" component={SettingsScreen} />
     </Stack.Navigator>
   );
